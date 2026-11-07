@@ -1,44 +1,36 @@
-Steel Plate Fault Classification
+# Steel Plate Fault Classification
 
-1. Project Overview
+## 1. Problem Statement
 
-This project implements and compares five Machine Learning classification algorithms to identify different types of faults in steel plates.
+Steel plates can have different surface and structural faults. This project builds and compares five machine learning classifiers that predict the fault type of a steel plate from 27 measured features, and identifies the best model using standard evaluation metrics.
 
-The objective is to evaluate multiple classification models and identify the most suitable model using standard performance metrics.
+## 2. Dataset Description
 
-2. Dataset
+| Item | Detail |
+|---|---|
+| Dataset | Steel Plates Faults |
+| Source | UCI Machine Learning Repository (ID 198) |
+| Instances | 1941 |
+| Input features | 27 |
+| Target classes | 7 |
+| Missing values | 0 |
 
-- Dataset: Steel Plates Faults
-- Source: UCI Machine Learning Repository
-- Dataset ID: 198
-- Total instances: 1941
-- Input features: 27
-- Target classes: 7
-- Missing values: 0
+**Fault categories:** Bumps, Dirtiness, K_Scratch, Other_Faults, Pastry, Stains, Z_Scratch
 
-Fault Categories
+The original target is stored as 7 one-hot columns. These were converted into a single class label. The classes are imbalanced: Other_Faults has the most samples and Dirtiness the fewest.
 
-1. Bumps
-2. Dirtiness
-3. K_Scratch
-4. Other_Faults
-5. Pastry
-6. Stains
-7. Z_Scratch
+## 3. GitHub Repository
 
-3. Data Preprocessing
+https://github.com/anandtanuku/Steel_Plate_Fault
 
-- Checked dataset dimensions and missing values.
-- Converted one-hot encoded target columns into class labels.
-- Split the dataset into 80% training and 20% testing.
-- Used stratified sampling to preserve class proportions.
+## 4. Data Preprocessing
+
+- Checked dataset shape and missing values.
+- Converted the one-hot target columns into one class label.
+- Split the data 80% train and 20% test, stratified by class (random state 42).
 - Applied feature scaling for Logistic Regression, KNN and SVM.
 
-Random state: 42
-
-4. Machine Learning Models
-
-Five classification algorithms were implemented:
+## 5. Models Used
 
 1. Logistic Regression
 2. Decision Tree Classifier
@@ -46,89 +38,61 @@ Five classification algorithms were implemented:
 4. Gaussian Naive Bayes
 5. Support Vector Machine (SVM)
 
-Each trained model was saved using Joblib for later inference.
+Each trained model is saved with Joblib in the `model/` folder.
 
-5. Evaluation Metrics
+**Metrics:** Accuracy, AUC, Precision, Recall, F1 and MCC. Precision, Recall and F1 use macro averaging. AUC uses one-vs-rest.
 
-The models were evaluated using:
+## 6. Model Comparison
 
-- Accuracy
-- Area Under the ROC Curve (AUC)
-- Precision
-- Recall
-- F1 Score
-- Matthews Correlation Coefficient (MCC)
+| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
+|---|---|---|---|---|---|---|
+| Logistic Regression | 0.7275 | 0.9379 | 0.7613 | 0.7305 | 0.7418 | 0.6487 |
+| Decision Tree | 0.7429 | 0.8534 | 0.7531 | 0.7559 | 0.7530 | 0.6688 |
+| KNN | 0.7275 | 0.9184 | 0.7458 | 0.7482 | 0.7416 | 0.6548 |
+| Naive Bayes | 0.4524 | 0.8386 | 0.4315 | 0.4795 | 0.3830 | 0.3789 |
+| Support Vector Machine | 0.7506 | 0.9493 | 0.8006 | 0.7390 | 0.7626 | 0.6765 |
 
-Precision, Recall and F1 Score use macro averaging. AUC uses macro one-vs-rest evaluation.
+## 7. Observations on Model Performance
 
-6. Model Comparison
+| ML Model Name | Observation about model performance |
+|---|---|
+| Logistic Regression | <<your 1-2 sentences>> |
+| Decision Tree | <<your 1-2 sentences>> |
+| KNN | <<your 1-2 sentences>> |
+| Naive Bayes | <<your 1-2 sentences>> |
+| Support Vector Machine | <<your 1-2 sentences>> |
+| **Overall winner** | **SVM**, because <<your reason>> |
 
-Model| Accuracy| AUC| Precision| Recall| F1 Score| MCC
-Logistic Regression| 0.7275| 0.9379| 0.7613| 0.7305| 0.7418| 0.6487
-Decision Tree| 0.7429| 0.8534| 0.7531| 0.7559| 0.7530| 0.6688
-KNN| 0.7275| 0.9184| 0.7458| 0.7482| 0.7416| 0.6548
-Gaussian Naive Bayes| 0.4524| 0.8386| 0.4315| 0.4795| 0.3830| 0.3789
-SVM| 0.7506| 0.9493| 0.8006| 0.7390| 0.7626| 0.6765
+## 8. Streamlit Web Application
 
-7. Results and Observations
+The app lets the user:
 
-- SVM achieved the highest accuracy (75.06%), AUC (0.9493), precision (0.8006), F1 score (0.7626) and MCC (0.6765).
-- Decision Tree achieved the highest recall (0.7559).
-- Logistic Regression and KNN demonstrated competitive performance.
-- Gaussian Naive Bayes showed comparatively lower performance.
-- The dataset exhibits class imbalance, which can influence classification performance across different fault categories.
-
-Based on the overall evaluation, SVM demonstrated the best overall performance among the five models.
-
-8. Streamlit Web Application
-
-The application allows users to:
-
-- Upload a test dataset in CSV format.
-- Select one of the five trained models.
-- Evaluate the uploaded dataset.
+- Upload a test dataset (CSV, with the target column).
+- Select one of the five trained models from a dropdown.
 - View all six evaluation metrics.
-- View the confusion matrix.
-- View the classification report.
+- View the confusion matrix and classification report.
 
-The application loads previously saved models and does not retrain them during evaluation.
+The app loads the saved models and does not retrain them.
 
-Live Application:
-https://steel-plate-fault-classification.streamlit.app/
+**Live app:** https://steel-plate-fault-classification.streamlit.app/
 
-9. GitHub Repository
+## 9. Project Structure
 
-https://github.com/anandtanuku/Steel_Plate_Fault
-
-10. Project Structure
-
+```text
 Steel_Plate_Fault/
-│
 ├── app.py
 ├── requirements.txt
 ├── README.md
 ├── test_data.csv
 ├── results_table.csv
-│
 └── model/
     ├── Logistic_Regression.joblib
     ├── Decision_Tree.joblib
     ├── KNN.joblib
     ├── Naive_Bayes.joblib
     └── SVM.joblib
+```
 
-11. Technologies Used
+## 10. Technologies Used
 
-- Python
-- NumPy
-- Pandas
-- Scikit-learn
-- Matplotlib
-- Joblib
-- Streamlit
-
-12. Conclusion
-
-Five classification algorithms were implemented and evaluated on the Steel Plates Faults dataset.
-
-SVM achieved the strongest overall performance, while Decision Tree achieved the highest recall. The trained models were deployed through a Streamlit application for interactive evaluation using uploaded test datasets.
+Python, NumPy, Pandas, Scikit-learn, Matplotlib, Joblib, Streamlit
