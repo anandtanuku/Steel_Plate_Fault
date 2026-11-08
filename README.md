@@ -21,7 +21,7 @@ The original target is stored as 7 one-hot columns. These were converted into a 
 
 ## 3. GitHub Repository
 
-https://github.com/anandtanuku/Steel_Plate_Fault
+[Steel_Plate_Fault](https://github.com/anandtanuku/Steel_Plate_Fault)
 
 ## 4. Data Preprocessing
 
@@ -50,7 +50,7 @@ Each trained model is saved with Joblib in the `model/` folder.
 | Decision Tree | 0.7429 | 0.8534 | 0.7531 | 0.7559 | 0.7530 | 0.6688 |
 | KNN | 0.7275 | 0.9184 | 0.7458 | 0.7482 | 0.7416 | 0.6548 |
 | Naive Bayes | 0.4524 | 0.8386 | 0.4315 | 0.4795 | 0.3830 | 0.3789 |
-| Support Vector Machine | 0.7506 | 0.9493 | 0.8006 | 0.7390 | 0.7626 | 0.6765 |
+| **Support Vector Machine** | **0.7506** | **0.9493** | **0.8006** | 0.7390 | **0.7626** | **0.6765** |
 
 ## 7. Observations on Model Performance
 
@@ -64,7 +64,6 @@ Each trained model is saved with Joblib in the `model/` folder.
 
 **Overall winner for this dataset: SVM**, because it has the highest accuracy, AUC, F1 and MCC. The test set is small (about 389 samples), so close scores may change on another split.
 
-
 ## 8. Streamlit Web Application
 
 The app lets the user:
@@ -76,7 +75,7 @@ The app lets the user:
 
 The app loads the saved models and does not retrain them.
 
-**Live app:** https://steel-plate-fault-classification.streamlit.app/
+**Live app:** [steel-plate-fault-classification.streamlit.app](https://steel-plate-fault-classification.streamlit.app/)
 
 ## 9. Project Structure
 
