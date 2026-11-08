@@ -62,7 +62,8 @@ Each trained model is saved with Joblib in the `model/` folder.
 | Naive Bayes | Lowest, with accuracy 0.4524 and MCC 0.3789. It assumes features are independent, but several here are strongly related. |
 | Support Vector Machine | Best AUC (0.9493), F1 (0.7626) and MCC (0.6765), with accuracy 0.7506. Its kernel fits curved class boundaries well. |
 
-**Overall winner for this dataset: SVM**, because it has the highest AUC and MCC. The test set is small, so close scores may change on another split.
+**Overall winner for this dataset: SVM**, because it has the highest accuracy, AUC, F1 and MCC. The test set is small (about 389 samples), so close scores may change on another split.
+
 
 ## 8. Streamlit Web Application
 
