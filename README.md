@@ -56,11 +56,11 @@ Each trained model is saved with Joblib in the `model/` folder.
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | Accuracy 0.88 and AUC 0.93, so it separates the classes well. It struggles on overlapping cases because its boundary is a straight line. |
-| Decision Tree | Accuracy 0.85 but AUC only 0.82. A tree gives rough, stepwise probabilities, so its ranking of cases is weaker. |
-| KNN | Accuracy 0.86. It depends on distances, so scaled features matter and rare classes can be outvoted. |
-| Naive Bayes | Lowest, with accuracy 0.74. It assumes features are independent, but several here are strongly related. |
-| Support Vector Machine | Best on accuracy 0.91 and AUC 0.96. Its kernel fits curved class boundaries well. |
+| Logistic Regression | Accuracy 0.7275 but a strong AUC of 0.9379, so it ranks the classes well. It struggles on overlapping cases because its boundary is a straight line. |
+| Decision Tree | Accuracy 0.7429 but AUC only 0.8534. A tree gives rough, stepwise probabilities, so its ranking of cases is weaker. |
+| KNN | Accuracy 0.7275 and AUC 0.9184. It depends on distances, so scaled features matter and rare classes can be outvoted. |
+| Naive Bayes | Lowest, with accuracy 0.4524 and MCC 0.3789. It assumes features are independent, but several here are strongly related. |
+| Support Vector Machine | Best AUC (0.9493), F1 (0.7626) and MCC (0.6765), with accuracy 0.7506. Its kernel fits curved class boundaries well. |
 
 **Overall winner for this dataset: SVM**, because it has the highest AUC and MCC. The test set is small, so close scores may change on another split.
 
